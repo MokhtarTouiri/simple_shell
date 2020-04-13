@@ -1,4 +1,81 @@
-#include "shell.h"hh
+#include "shell.h"
+
+/**
+ * _strspn - Gets the length of substring (0x09)
+ * @str: Given string
+ * @accept: Substring bytes
+ * Return: The number of bytes
+ */
+unsigned int _strspn(char *str, char *accept)
+{
+	unsigned int i;
+	unsigned int j;
+	int occurance;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		occurance = 0;
+		for (j = 0; accept[j] != '\0'; j++)
+		{
+			if (str[i] == accept[j])
+				occurance += 1;
+		}
+		if (occurance == 0)
+		{
+			break;
+		}
+	}
+	return (i);
+}
+
+/**
+ * _strlen - find the length of string (0x09)
+ * @s: the streng to be sized
+ *
+ * Return: the length
+ */
+int _strlen(char *s)
+{
+	int length = 0;
+
+	while (*s != '\0')
+	{
+		s++;
+		length++;
+	}
+	return (length);
+}
+
+/**
+ * _strpbrk - searches a string fir any of set of bytes (0x09)
+ * @str: Given string
+ * @accept: Substring set of bytes
+ *
+ * Return: A pointer to the byte in @str
+ */
+
+
+char *_strpbrk(char *str, char *accept)
+{
+	int i;
+	int occur;
+
+	while (*str != '\0')
+	{
+		occur = 0;
+		for (i = 0; accept[i] != '\0'; i++)
+		{
+			if (*str == accept[i])
+				occur += 1;
+		}
+		if (occur > 0)
+			break;
+		str++;
+	}
+	if (*str == '\0')
+		return (NULL);
+	return (str);
+}
 
 /**
  * _strdup - copy of the string (0x0B)
@@ -16,7 +93,7 @@ if (str == NULL)
 while (str[i] != '\0')
 	i++;
 
-d = malloc(i *sizeof(char));
+d = malloc(i * sizeof(char));
 
 if (d == NULL)
 	return (NULL);
