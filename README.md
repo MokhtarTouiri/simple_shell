@@ -1,6 +1,6 @@
 # SIMPLE SHELL
 
-We will attempt to develop a simple shell similar to /bin/sh
+In this project, we will attempt to develop a simple shell similar to /bin/sh
 
 ## Getting Started
 
@@ -8,11 +8,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the ste
-
-End with an example of getting some data out of the system or using it for a little demo
+You will only need to compile the main function
+```
+gcc -Wall -Werror -Wextra -pedantic shell.c -o hsh
+```
 
 ## Running the tests
 
@@ -28,22 +27,12 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Add additional notes about how to deploy this on a live system 
 
 ## Authors
 
-See also the list of the authos who participated in this project in the AUTHORS file.
+See also the list of the authos who participated in this project in the [AUTHORS](AUTHORS) file.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-
+This project is not licensed yet.
