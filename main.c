@@ -1,12 +1,12 @@
 /**
- * shell - the main shell program
+ * main - the main shell program
  * @ac: Number of command line args
  * @av: Arguments
  * @ev: Environment vars
- * Return: 0 if success, code otherwise
+ * Return: noting
  */
 
-int main(int ac, char **av, char **ev)
+void main(int ac, char **av, char **ev)
 {
 sev_t sev;
 int exitcode = 0;
@@ -25,7 +25,6 @@ while (sev.good2go)
 }
 exitcode = sev.error;
 clean_sev(&sev);
-return (exitcode);
 }
 
 
