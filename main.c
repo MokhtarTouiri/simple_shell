@@ -9,21 +9,18 @@
 void main(int ac, char **av, char **ev)
 {
 sev_t sev;
-int exitcode = 0;
-(void)ac;
 
 initialize_shell_env(&sev, av, ev);
 
-while (sev.good2go)
+while (1)
 {
-	display_prompt(sev);
+	write(STDOUT_FILENO, "hsh$ ", 4);
 	getcommand(&sev);
 	check_alias(&sev);
 	if (!check_builtin(&sev))
 	action(&sev);
 	display_error(&sev);
 }
-exitcode = sev.error;
 clean_sev(&sev);
 }
 
