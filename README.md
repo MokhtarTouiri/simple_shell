@@ -12,7 +12,6 @@ You will only need to compile the main function
 ```
 gcc -Wall -Werror -Wextra -pedantic shell.c -o hsh
 ```
-
 ## Running the tests
 
 Explain how to run the automated tests for this system
@@ -24,10 +23,9 @@ Explain what these tests test and why
 ```
 Give an example
 ```
-
 ## Deployment
 
-Add additional notes about how to deploy this on a live system 
+To be filled later
 
 ## Authors
 
