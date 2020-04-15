@@ -7,7 +7,7 @@
 
 int main(void)
 {
-char *cmd, *line = NULL, **av = NULL;
+char *line = NULL, **av = NULL;
 size_t bufsize = 0;
 
 signal(SIGINT, SIG_DFL);
@@ -32,9 +32,7 @@ av = split_line(line);
 if (av == NULL || *av == NULL)
 	continue;
 
-cmd = av[0];
-
-if (execute(cmd, av) < 0)
+if (execute(av) < 0)
 {
 	mem_free(av);
 	perror("error");

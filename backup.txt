@@ -9,17 +9,15 @@ int main(void)
 {
 char *cmd, *line = NULL, **av = NULL;
 size_t bufsize = 0;
-int status = 1;
 
 signal(SIGINT, SIG_DFL);
 
-while (status)
+while (1)
 {
+free(av);
 av = NULL;
-
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
-
 
 if (getline(&line, &bufsize, stdin) < 0)
 {
@@ -38,15 +36,11 @@ cmd = av[0];
 
 if (execute(cmd, av) < 0)
 {
-	if (strcmp(cmd, "exit") != 0)
-	{
-		free_av(av);
-		perror("error");
-		exit(EXIT_FAILURE);
-	}
-	if (cmd != av[0])
-		free(cmd);
+	mem_free(av);
+	perror("error");
+	exit(127);
 }
 }
 return (0);
 }
+
