@@ -9,11 +9,11 @@ int main(void)
 {
 char *cmd, *line = NULL, **av = NULL;
 size_t bufsize = 0;
+int status = 1;
 
 signal(SIGINT, SIG_DFL);
 
-while (1)
-{
+do {
 free(av);
 av = NULL;
 if (isatty(STDIN_FILENO))
@@ -40,6 +40,7 @@ if (execute(cmd, av) < 0)
 	perror("error");
 	exit(127);
 }
-}
+} while (status);
+
 return (0);
 }
