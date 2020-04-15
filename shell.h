@@ -18,7 +18,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-extern char **env;
+extern char **environ;
 
 /*
  *Functions From previous works
@@ -35,7 +35,7 @@ char *_strdup(char *str);
  */
 
 char **split_line(char *line);
-int execute(char *cmd, char **av, char **env);
+int execute(char *cmd, char **av);
 char *read_line(void);
 char *read_line_backup(void);
 

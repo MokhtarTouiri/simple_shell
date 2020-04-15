@@ -7,7 +7,7 @@
 
 int main(void)
 {
-char *cmd, *line = NULL, **av = NULL, **env = NULL;
+char *cmd, *line = NULL, **av = NULL;
 __attribute__ ((unused)) int status = 1;
 
 signal(SIGINT, SIG_DFL);
@@ -25,7 +25,7 @@ if (av == NULL || *av == NULL)
 	continue;
 
 cmd = av[0];
-if (execute(cmd, av, env) < 0)
+if (execute(cmd, av) < 0)
 {
 	if (strcmp(cmd, "exit") != 0)
 	{
