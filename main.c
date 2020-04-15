@@ -37,9 +37,9 @@ cmd = av[0];
 
 if (execute(cmd, av) < 0)
 {
-	free_av(av);
+	mem_free(av);
 	perror("error");
-	exit(EXIT_FAILURE);
+	exit(127);
 }
 }
 return (0);

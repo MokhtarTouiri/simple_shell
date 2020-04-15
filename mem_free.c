@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- *free_av - Free arguments
+ *mem_free - Free arguments
  *@av: arguments of a program
  *Return: Void
  */
 
-void free_av(char **av)
+void mem_free(char **av)
 {
 int c = 0;
 if (av == NULL)

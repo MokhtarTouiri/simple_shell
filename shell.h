@@ -36,7 +36,7 @@ char *_strdup(char *str);
 
 char **split_line(char *line);
 int execute(char *cmd, char **av);
-void free_av(char **av);
+void mem_free(char **av);
 
 /*
  *BUILTIN COMMANDS
