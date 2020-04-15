@@ -28,9 +28,9 @@ if (execute(cmd, av) < 0)
 	if (strcmp(cmd, "exit") != 0)
 	{
 		free(av);
+		perror("error");
+		return (0);
 	}
-	perror("error");
-	exit(EXIT_FAILURE);
 }
 free(line);
 }
