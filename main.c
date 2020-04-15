@@ -29,11 +29,13 @@ if (av == NULL || *av == NULL)
 cmd = av[0];
 if (strcmp(cmd, btin_cmd[0]) == 0)
 {
+	mem_free(av);
 	new_env();
 	continue;
 }
 else if (strcmp(cmd, btin_cmd[1]) == 0)
 {
+	mem_free(av);
 	new_exit(av);
 	continue;
 }

@@ -30,7 +30,6 @@ while (environ[c])
 	write(STDOUT_FILENO, "\n", 1);
 	c++;
 }
-
 }
 
 /**
