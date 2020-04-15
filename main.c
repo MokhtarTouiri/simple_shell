@@ -8,6 +8,7 @@
 int main(void)
 {
 char *cmd, *line = NULL, **av = NULL;
+size_t bufsize = 0;
 
 signal(SIGINT, SIG_DFL);
 
@@ -18,10 +19,10 @@ av = NULL;
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
 
-line = read_line();
-
-if (line == NULL)
+if (getline(&line, &bufsize, stdin) < 0)
 {
+	free(line);
+	line = NULL;
 	write(STDIN_FILENO, "\n", 1);
 	break;
 }
