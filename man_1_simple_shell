@@ -1,9 +1,22 @@
-Manual File
+.\" Manpage for MCshell.
 
-NAME
+.\" Contact mohamed-chiheb.lahouli@holbertonschool.com & $
 
-DESCRIPTION
+.TH man 2 "15 April 2020" "1.0" "MCshell man page"
 
-OVERVIEW
+.SH NAME
 
-LIST OF ARGUMENTS
+MCshell: Attempt of a basic linux shell
+
+.SH DESCRIPTION
+
+.SH OVERVIEW
+
+.SH LIST OF ARGUMENTS
+
+.SH BUGS
+
+.SH AUTHORS
+
+
+
