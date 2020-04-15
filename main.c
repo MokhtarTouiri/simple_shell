@@ -20,10 +20,10 @@ if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
 
 
-if(getline(&line, &bufsize, stdin) < 0)
+if (getline(&line, &bufsize, stdin) < 0)
 {
-        free(line);
-        line = NULL;
+	free(line);
+	line = NULL;
 	write(STDIN_FILENO, "\n", 1);
 	break;
 }
