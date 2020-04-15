@@ -7,17 +7,14 @@
 
 int main(void)
 {
-char *cmd, *line = NULL, **av = NULL;
+char *cmd, *line = NULL, **av = NULL, *btin_cmd[] = {"env", "exit"};
 size_t bufsize = 0;
 int status = 1;
-
 signal(SIGINT, SIG_DFL);
-
 do {
 av = NULL;
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
-
 if (getline(&line, &bufsize, stdin) < 0)
 {
 	free(line);
@@ -27,15 +24,19 @@ if (getline(&line, &bufsize, stdin) < 0)
 }
 
 av = split_line(line);
-
 if (av == NULL || *av == NULL)
 	continue;
-
-if (execute_bl_in(av))
-	continue;
-
 cmd = av[0];
-
+if (strcmp(cmd, btin_cmd[0]) == 0)
+{
+	new_env();
+	continue;
+}
+else if (strcmp(cmd, btin_cmd[1]) == 0)
+{
+	new_exit(av);
+	continue;
+}
 if (execute(cmd, av) < 0)
 {
 	mem_free(av);
@@ -45,6 +46,5 @@ if (execute(cmd, av) < 0)
 else
 	free(av);
 } while (status);
-
 return (0);
 }
