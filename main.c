@@ -8,15 +8,26 @@
 int main(void)
 {
 char *cmd, *line = NULL, **av = NULL;
-__attribute__ ((unused)) int status = 1;
+size_t bufsize = 0;
+
+signal(SIGINT, SIG_DFL);
 
 while (1)
 {
+free(av);
 av = NULL;
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
 
-line = read_line();
+
+if(getline(&line, &bufsize, stdin) < 0)
+{
+        free(line);
+        line = NULL;
+	write(STDIN_FILENO, "\n", 1);
+	break;
+}
+
 av = split_line(line);
 
 if (av == NULL || *av == NULL)
