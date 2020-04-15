@@ -34,7 +34,7 @@ char *_strdup(char *str);
  *NEW FUNCTIONS
  */
 
-char *read_line();
+char *read_line(void);
 char **split_line(char *line);
 int execute(char *cmd, char **av);
 void mem_free(char **av);
@@ -43,7 +43,7 @@ void mem_free(char **av);
  *BUILTIN COMMANDS
  */
 
-int new_exit();
+int new_exit(void);
 
 #endif
 
