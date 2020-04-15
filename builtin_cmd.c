@@ -6,11 +6,14 @@
  * Return: Always 0.
  */
 
-int new_exit(void)
+int new_exit(char **av)
 {
-	exit(EXIT_SUCCESS);
+int code = 0;
+if (av[1] != NULL)
+	code = _atoi(av[1]);
+mem_free(av);
+exit(code);
 }
-
 
 
 /**
@@ -51,7 +54,7 @@ if (strcmp(cmd, btin_cmd[0]) == 0)
 }
 else if (strcmp(cmd, btin_cmd[1]) == 0)
 {
-	new_exit();
+	new_exit(av);
 	return (1);
 }
 return (0);

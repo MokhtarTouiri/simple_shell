@@ -29,6 +29,7 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
+int _atoi(char *s);
 
 /*
  *NEW FUNCTIONS
@@ -44,7 +45,7 @@ void mem_free(char **av);
  *BUILTIN COMMANDS
  */
 
-int new_exit(void);
+int new_exit(char **av);
 void new_env(void);
 int execute_bl_in(char **av);
 
