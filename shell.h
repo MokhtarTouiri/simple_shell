@@ -16,6 +16,9 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <errno.h>
+
+extern char **env;
 
 /*
  *Functions From previous works
@@ -32,8 +35,7 @@ char *_strdup(char *str);
  */
 
 char **split_line(char *line);
-int launch(char **av);
-int execute(char **av);
+int execute(char *cmd, char **av, char **env);
 char *read_line(void);
 char *read_line_backup(void);
 

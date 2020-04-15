@@ -7,24 +7,36 @@
  * Return: 0 on success code error if failure.
  */
 
-int main(__attribute__ ((unused)) int ac, char **av)
+int main(void)
 {
-char *line = NULL;
-int status =1;
+char *cmd, *line = NULL, **av = NULL, **env =NULL;
+__attribute__ ((unused)) int status = 1;
 
-do {
-printf("MChsh$ ");
+signal(SIGINT, SIG_DFL);
+
+while (1)
+{
+av = NULL;
+if (isatty(STDIN_FILENO))
+	write(STDOUT_FILENO, "MChsh$ ", 7);
 
 line = read_line();
 av = split_line(line);
-status = execute(av);
 
-free(line);
-if (strcmp(av[0], "exit") != 0)
+if (av == NULL || *av == NULL)
+	continue;
+
+cmd = av[0];
+if (execute(cmd, av, env) < 0)
 {
-	free(av);
+	if (strcmp(cmd, "exit") != 0)
+	{
+		free(av);
+	}
+	perror("error");
+	exit(EXIT_FAILURE);
 }
-} while (status);
-
-return (EXIT_SUCCESS);
+free(line);
+}
+return (0);
 }

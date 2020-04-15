@@ -1,12 +1,13 @@
 #include "shell.h"
 
 /**
- *launch - function start prompt.
+ *execute - function start prompt.
+ *@cmd: command.
  *@av: arguments.
- *Return: Always returns 1.
+ *Return: Always returns 1 on success.
  */
 
-int launch(char **av)
+int execute(char *cmd, char **av, char **env)
 {
 pid_t pid;
 int s;
@@ -14,46 +15,15 @@ int s;
 pid = fork();
 if (pid == 0)
 {
-	if (execvp(av[0], av) == -1)
+	signal(SIGINT, SIG_DFL);
+	if (execve(cmd, av, env) < 0)
 	{
-		perror("MChsh Error");
+		return (-1);
+		exit(EXIT_FAILURE);
 	}
-	exit(EXIT_FAILURE);
 }
-else if (pid < 0)
-	perror("MChsh Error");
 else
-{
-do {
-	waitpid(pid, &s, WUNTRACED);
-} while (!WIFEXITED(s) && !WIFSIGNALED(s));
-}
+	wait(&s);
 return (1);
 }
 
-
-/**
- *execute - function command Shell
- *@av: arguments
- *Return: 0 to exit, 1 to continue.
- */
-
-int execute(char **av)
-{
-int i;
-char *cmd[] = { "env", "exit" };
-
-if (av[0] == NULL)
-{
-	return (1);
-}
-
-for (i = 0; i < 2; i++)
-{
-	if (strcmp(av[0], cmd[i]) == 0)
-	{
-	}
-}
-
-return (launch(av));
-}
