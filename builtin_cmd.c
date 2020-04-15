@@ -19,7 +19,7 @@ int new_exit(void)
  * Return: Return 1 if success.
  */
 
-int new_env(void)
+void new_env(void)
 {
 int c = 0;
 while (environ[c])
@@ -29,5 +29,30 @@ while (environ[c])
 	c++;
 }
 
-return (1);
+}
+
+/**
+ * execute_bl_in - Builtin command management
+ *@av: arguments
+ * Return: Return 1 if success.
+ */
+
+int execute_bl_in(char **av)
+{
+char *cmd = av[0], *btin_cmd[] = {"env", "exit"};
+
+if (cmd == NULL)
+	return (1);
+
+if (strcmp(cmd, btin_cmd[0]) == 0)
+{
+	new_env();
+	return (1);
+}
+else if (strcmp(cmd, btin_cmd[1]) == 0)
+{
+	new_exit();
+	return (1);
+}
+return (0);
 }

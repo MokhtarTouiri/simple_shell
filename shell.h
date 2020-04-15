@@ -39,12 +39,14 @@ char **split_line(char *line);
 int execute(char *cmd, char **av);
 void mem_free(char **av);
 
+
 /*
  *BUILTIN COMMANDS
  */
 
 int new_exit(void);
-int new_env(void);
+void new_env(void);
+int execute_bl_in(char **av);
 
 #endif
 

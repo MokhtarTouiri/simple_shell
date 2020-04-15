@@ -32,6 +32,9 @@ av = split_line(line);
 if (av == NULL || *av == NULL)
 	continue;
 
+if(execute_bl_in(av))
+	continue;
+
 cmd = av[0];
 
 if (execute(cmd, av) < 0)
