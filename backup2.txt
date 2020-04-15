@@ -7,7 +7,8 @@
 
 int main(void)
 {
-char *cmd, *line = NULL, **av = NULL;
+char *line = NULL, **av = NULL;
+char *cmd = NULL, *btin_cmd[] = {"env", "exit"};
 size_t bufsize = 0;
 
 signal(SIGINT, SIG_DFL);
@@ -33,8 +34,11 @@ if (av == NULL || *av == NULL)
 	continue;
 
 cmd = av[0];
-
-if (execute(cmd, av) < 0)
+if ((strcmp(cmd, btin_cmd[0]) == 0) && (av[1] == NULL))
+	new_env();
+else if ((strcmp(cmd, btin_cmd[1]) == 0) && (av[1] == NULL))
+	new_exit();
+else if (execute(av) < 0)
 {
 	mem_free(av);
 	perror("error");
@@ -43,3 +47,4 @@ if (execute(cmd, av) < 0)
 }
 return (0);
 }
+

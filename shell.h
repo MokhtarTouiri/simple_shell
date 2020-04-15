@@ -36,8 +36,7 @@ char *_strdup(char *str);
 
 char *read_line(void);
 char **split_line(char *line);
-int launch(char *cmd, char **av);
-int execute(char **av);
+int execute(char *cmd, char **av);
 void mem_free(char **av);
 
 /*
