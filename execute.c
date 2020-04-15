@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- *execute - function start prompt.
- *@cmd: command.
- *@av: arguments.
+ *execute - function exec command
+ *@cmd: command
+ *@av: arguments
+ *@env: environment variable
  *Return: Always returns 1 on success.
  */
 

@@ -2,14 +2,12 @@
 
 /**
  * main - the main shell program
- * @ac: number of arguments
- * @av: Strings containing arguments
  * Return: 0 on success code error if failure.
  */
 
 int main(void)
 {
-char *cmd, *line = NULL, **av = NULL, **env =NULL;
+char *cmd, *line = NULL, **av = NULL, **env = NULL;
 __attribute__ ((unused)) int status = 1;
 
 signal(SIGINT, SIG_DFL);
