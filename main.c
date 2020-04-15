@@ -14,7 +14,6 @@ int status = 1;
 signal(SIGINT, SIG_DFL);
 
 do {
-free(av);
 av = NULL;
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
@@ -43,6 +42,8 @@ if (execute(cmd, av) < 0)
 	perror("error");
 	exit(127);
 }
+else
+	free(av);
 } while (status);
 
 return (0);
