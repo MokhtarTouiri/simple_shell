@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 
 /*
  *Functions From previous works
@@ -32,7 +35,7 @@ char **split_line(char *line);
 int launch(char **av);
 int execute(char **av);
 char *read_line(void);
-
+char *read_line_backup(void);
 
 /*
  *BUILTIN COMMANDS

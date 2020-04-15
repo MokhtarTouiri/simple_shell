@@ -7,16 +7,18 @@
  * Return: 0 on success code error if failure.
  */
 
-int main(int ac, char **av)
+int main(__attribute__ ((unused)) int ac, char **av)
 {
-char *line;
-int status = ac;
+char *line = NULL;
+int status =1;
 
 do {
-write(STDOUT_FILENO, "MChsh>", 6);
+printf("MChsh$ ");
+
 line = read_line();
 av = split_line(line);
 status = execute(av);
+
 free(line);
 if (strcmp(av[0], "exit") != 0)
 {
@@ -24,5 +26,5 @@ if (strcmp(av[0], "exit") != 0)
 }
 } while (status);
 
-return (0);
+return (EXIT_SUCCESS);
 }

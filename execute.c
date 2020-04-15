@@ -16,12 +16,12 @@ if (pid == 0)
 {
 	if (execvp(av[0], av) == -1)
 	{
-		perror("MChsh");
+		perror("MChsh Error");
 	}
 	exit(EXIT_FAILURE);
 }
 else if (pid < 0)
-	perror("MChsh");
+	perror("MChsh Error");
 else
 {
 do {

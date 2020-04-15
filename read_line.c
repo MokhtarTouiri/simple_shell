@@ -8,46 +8,21 @@
 
 char *read_line(void)
 {
-
-#define RL_BUFSIZE 1024
-int bufsize = RL_BUFSIZE;
-int i = 0;
-char *buffer = malloc(sizeof(char) * bufsize);
-int c;
-
-if (!buffer)
+char *line = NULL;
+size_t bufsize = 0;
+if (getline(&line, &bufsize, stdin) < 0)
 {
-	perror("Allocation error\n");
-	exit(EXIT_FAILURE);
-}
-
-while (1) {
-c = getchar();
-if (c == EOF) {
-exit(EXIT_SUCCESS);
-}
- else if (c == '\n')
-{
-	buffer[i] = '\0';
-	return (buffer);
-}
- else
-{
-	buffer[i] = c;
-}
-i++;
-
-if (i >= bufsize)
-{
-	bufsize += RL_BUFSIZE;
-	buffer = realloc(buffer, bufsize);
-	if (!buffer)
+	if (feof(stdin))
 	{
-		perror("Allocation error\n");
-        	exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		perror("Error getline\n");
+		exit(EXIT_FAILURE);
 	}
 }
-}
+return (line);
 }
 
 
