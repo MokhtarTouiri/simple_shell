@@ -45,37 +45,31 @@ return (dest);
 
 /**
  * _atoi - that convert a string to an integer. (0x09)
- * @s: char to convert to an int
+ * @s: string to convert to an int
  * Return: int @out
 */
 
+
 int _atoi(char *s)
 {
-	int i = 0;
-	int j;
-	int sign = -1;
-	int out = 0;
+int i, sign = 1, n = 0, r;
 
-	if (s[i] == '\0')
-		return (0);
-	while (s[i] != '\0')
+for (i = 0; s[i] != '\0';)
+{
+	if (s[i] == '-')
+	{
+		sign = sign * (-1);
 		i++;
-	for (j = 0; j < i; j++)
-	{
-		if (s[j] == '-')
-			sign = sign * -1;
-		if ((s[j] >= '0') && (s[j] <= '9'))
-			break;
 	}
-	for (j = 0; j < i; j++)
+
+	else if ((s[i] >= '0') && (s[i] <= '9'))
 	{
-		if ((s[j] >= '0') && (s[j] <= '9') && (s[j] != '\0'))
-			{
-			out = (out * 10) - (s[j] - '0');
-			if ((s[j + 1] < '0') || (s[j + 1] > '9'))
-				break;
-			}
+		n = n * 10 + (s[i] - '0');
+		i++;
 	}
-	out = out * sign;
-	return (out);
+	else
+	i++;
+}
+r = (sign *n);
+return (r);
 }

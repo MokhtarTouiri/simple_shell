@@ -2,7 +2,7 @@
 
 /**
  * new_exit - Builtin command exit
- *
+ * @av: arguments.
  * Return: Always 0.
  */
 
@@ -11,7 +11,6 @@ int new_exit(char **av)
 int code = 0;
 if (av[1] != NULL)
 	code = _atoi(av[1]);
-mem_free(av);
 exit(code);
 }
 

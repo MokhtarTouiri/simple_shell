@@ -14,14 +14,12 @@ return;
 
 else
 {
-	while (av[c]);
+	while (av[c] != NULL)
 	{
 		free(av[c]);
 		av[c] = NULL;
 		c++;
 	}
 }
-
 free(av);
-av = NULL;
 }
