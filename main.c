@@ -36,6 +36,10 @@ if (av == NULL || *av == NULL)
 
 cmd = av[0];
 
+if (execute_bl_in(av))
+{
+	continue;
+}
 if (execute(cmd, av) < 0)
 {
 	mem_free(av);
