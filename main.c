@@ -34,16 +34,13 @@ if (av == NULL || *av == NULL)
 	continue;
 
 cmd = av[0];
+
 if (execute(cmd, av) < 0)
 {
-	if (strcmp(cmd, "exit") != 0)
-	{
-		free(av);
-		perror("error");
-		return (0);
-	}
+	free_av(av);
+	perror("error");
+	exit(EXIT_FAILURE);
 }
-free(line);
 }
 return (0);
 }
