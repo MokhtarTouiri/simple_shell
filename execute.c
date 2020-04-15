@@ -36,23 +36,11 @@ return (1);
 
 int execute(char **av)
 {
-char *cmd = av[0], *btin_cmd[] = {"env", "exit"};
+char *cmd = av[0];
 
 if (cmd == NULL)
 	return (1);
 
-if (strcmp(cmd, btin_cmd[0]) == 0)
-{
-	new_env();
-	return (1);
-}
-else if (strcmp(cmd, btin_cmd[1]) == 0)
-{
-	new_exit();
-	return (1);
-}
 else
-{
 	return (launch(cmd, av));
-}
 }

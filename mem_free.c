@@ -12,12 +12,15 @@ int c = 0;
 if (av == NULL)
 return;
 
-while (av[c])
+else
 {
-	free(av[c]);
-	av[c] = NULL;
-	c++;
-	}
-	free(av);
-	av = NULL;
+	do {
+		free(av[c]);
+		av[c] = NULL;
+		c++;
+	} while (av[c]);
+}
+
+free(av);
+av = NULL;
 }

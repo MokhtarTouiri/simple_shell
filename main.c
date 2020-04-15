@@ -8,6 +8,7 @@
 int main(void)
 {
 char *line = NULL, **av = NULL;
+char *cmd = NULL, *btin_cmd[] = {"env", "exit"};
 size_t bufsize = 0;
 
 signal(SIGINT, SIG_DFL);
@@ -32,7 +33,12 @@ av = split_line(line);
 if (av == NULL || *av == NULL)
 	continue;
 
-if (execute(av) < 0)
+cmd = av[0];
+if ((strcmp(cmd, btin_cmd[0]) == 0) && (av[1] == NULL))
+	new_env();
+else if ((strcmp(cmd, btin_cmd[1]) == 0) && (av[1] == NULL))
+	new_exit();
+else if (execute(av) < 0)
 {
 	mem_free(av);
 	perror("error");
