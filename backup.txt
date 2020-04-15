@@ -9,13 +9,14 @@ int main(void)
 {
 char *cmd, *line = NULL, **av = NULL;
 size_t bufsize = 0;
+int status = 1;
 
 signal(SIGINT, SIG_DFL);
 
-while (1)
+while (status)
 {
-free(av);
 av = NULL;
+
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
 
@@ -34,17 +35,18 @@ if (av == NULL || *av == NULL)
 	continue;
 
 cmd = av[0];
+
 if (execute(cmd, av) < 0)
 {
 	if (strcmp(cmd, "exit") != 0)
 	{
-		free(av);
+		free_av(av);
 		perror("error");
-		return (0);
+		exit(EXIT_FAILURE);
 	}
+	if (cmd != av[0])
+		free(cmd);
 }
-free(line);
 }
 return (0);
 }
-
