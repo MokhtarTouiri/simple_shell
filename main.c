@@ -1,5 +1,7 @@
 #include "shell.h"
 
+#include "shell.h"
+
 /**
  * main - the main shell program
  * Return: 0 on success code error if failure.
@@ -7,14 +9,18 @@
 
 int main(void)
 {
-char *cmd, *line = NULL, **av = NULL, *btin_cmd[] = {"env", "exit"};
+char *line = NULL, *cmd = NULL, **av = NULL;
 size_t bufsize = 0;
 int status = 1;
+
 signal(SIGINT, SIG_DFL);
+
 do {
+free(av);
 av = NULL;
 if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "MCshell$ ", 10);
+
 if (getline(&line, &bufsize, stdin) < 0)
 {
 	free(line);
@@ -24,29 +30,18 @@ if (getline(&line, &bufsize, stdin) < 0)
 }
 
 av = split_line(line);
+
 if (av == NULL || *av == NULL)
 	continue;
+
 cmd = av[0];
-if (strcmp(cmd, btin_cmd[0]) == 0)
-{
-	mem_free(av);
-	new_env();
-	continue;
-}
-else if (strcmp(cmd, btin_cmd[1]) == 0)
-{
-	mem_free(av);
-	new_exit(av);
-	continue;
-}
+
 if (execute(cmd, av) < 0)
 {
 	mem_free(av);
 	perror("error");
 	exit(127);
 }
-else
-	free(av);
 } while (status);
 return (0);
 }
