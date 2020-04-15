@@ -43,6 +43,9 @@ char *read_line_backup(void);
  *BUILTIN COMMANDS
  */
 
+int _cd(char **av);
+int _help(char **av);
+int newexit(char **av);
 
 #endif
 
