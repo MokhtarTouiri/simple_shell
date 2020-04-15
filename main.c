@@ -18,7 +18,10 @@ line = read_line();
 av = split_line(line);
 status = execute(av);
 free(line);
-free(av);
+if (strcmp(av[0], "exit") != 0)
+{
+	free(av);
+}
 } while (status);
 
 return (0);

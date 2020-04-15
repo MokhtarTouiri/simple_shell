@@ -1,11 +1,11 @@
 #include "shell.h"
 
-
 /**
- *cd - Builtin command change directory.
- *@av argument.
- *Return: Always returns 1.
+ * _cd - builtin command change directory
+ * @av: argument
+ * Return: Always returns 1.
  */
+
 int _cd(char **av)
 {
 if (av[1] == NULL)
@@ -22,13 +22,11 @@ else
 return (1);
 }
 
-
 /**
- *help - Builtin command help.
- *@av argument.
- *Return: Always returns 1.
+ * _help - builtin command help
+ * @av: argument
+ * Return: Always returns 1.
  */
-
 
 int _help(char **av)
 {
@@ -38,9 +36,9 @@ return (1);
 }
 
 /**
- *newexit - Builtin command exit.
- *@av argument.
- *Return: Always 0.
+ * newexit - Builtin command exit
+ * @av: argument
+ * Return: Always 0.
  */
 
 int newexit(char **av)
