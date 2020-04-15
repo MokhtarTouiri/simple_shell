@@ -15,7 +15,6 @@ if (getline(&line, &bufsize, stdin) < 0)
 {
 	free(line);
 	line = NULL;
-	write(STDIN_FILENO, "\n", 1);
 }
 
 return (line);
