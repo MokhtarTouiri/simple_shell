@@ -1,7 +1,7 @@
 #include "shell.h"
 
 #define BUFSIZE 64
-#define DELIM " \t\r\n\a:"
+#define DELIM " \t\r\n\a"
 
 /**
  *split_line - Convert string to tokens
@@ -16,6 +16,9 @@ int bufsize = BUFSIZE;
 char *token;
 char **tokens;
 char **tokens_backup;
+
+if (line == NULL)
+	return (NULL);
 
 tokens = malloc(sizeof(char *) * BUFSIZE);
 
