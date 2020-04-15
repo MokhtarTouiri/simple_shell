@@ -36,7 +36,7 @@ char *_strdup(char *str);
 
 char **split_line(char *line);
 int execute(char *cmd, char **av);
-char *read_line(void);
+
 
 /*
  *BUILTIN COMMANDS
