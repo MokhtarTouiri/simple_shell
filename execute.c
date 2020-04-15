@@ -41,19 +41,17 @@ return (1);
 int execute(char **av)
 {
 int i;
-char *cmd[] = { "cd", "help", "exit" };
-int (*cmd_func[]) (char **) = { &_cd, &_help, &newexit};
+char *cmd[] = { "env", "exit" };
 
 if (av[0] == NULL)
 {
 	return (1);
 }
 
-for (i = 0; i < 3; i++)
+for (i = 0; i < 2; i++)
 {
 	if (strcmp(av[0], cmd[i]) == 0)
 	{
-		return ((*cmd_func[i])(av));
 	}
 }
 
