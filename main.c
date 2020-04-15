@@ -14,7 +14,7 @@ while (1)
 {
 av = NULL;
 if (isatty(STDIN_FILENO))
-	write(STDOUT_FILENO, "#cisfun$ ", 9);
+	write(STDOUT_FILENO, "MCshell$ ", 10);
 
 line = read_line();
 av = split_line(line);
