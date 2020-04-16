@@ -70,6 +70,6 @@ for (i = 0; s[i] != '\0';)
 	else
 	i++;
 }
-r = (sign *n);
+r = sign * n;
 return (r);
 }
