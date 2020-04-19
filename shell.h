@@ -37,7 +37,7 @@ int _atoi(char *s);
 
 char *read_line(void);
 char **split_line(char *line);
-int execute(char *cmd, char **av);
+int execute(char *cmd, char **av, char *line);
 void mem_free(char **av);
 
 

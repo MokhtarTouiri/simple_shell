@@ -33,7 +33,7 @@ if (av == NULL || *av == NULL)
 	continue;
 
 cmd = av[0];
-if (execute(cmd, av) < 0)
+if (execute(cmd, av, line) < 0)
 {
 	mem_free(av);
 	perror("error");

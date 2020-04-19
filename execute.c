@@ -33,41 +33,35 @@ return (0);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  *execute - function exec command
  *@cmd: command
  *@av: arguments
+ *@line: entered command
  *Return: Always returns 1 on success.
  */
 
-int execute(char *cmd, char **av)
+int execute(char *cmd, char **av, char *line)
 {
 pid_t pid;
-int s;
+int s, e;
 
-pid = fork();
-if (pid == 0)
+e= execute_bl_in(av, line);
+
+if (e == 0)
 {
-	signal(SIGINT, SIG_DFL);
-	if (execve(cmd, av, environ) < 0)
+	pid = fork();
+	if (pid == 0)
 	{
-		return (-1);
-		exit(EXIT_FAILURE);
+		signal(SIGINT, SIG_DFL);
+		if (execve(cmd, av, environ) < 0)
+		{
+			return (-1);
+			exit(EXIT_FAILURE);
+		}
 	}
+	else
+		wait(&s);
 }
-else
-	wait(&s);
 return (1);
 }
