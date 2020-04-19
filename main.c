@@ -9,7 +9,7 @@ int main(void)
 {
 char *line = NULL, *cmd = NULL, **av = NULL;
 size_t bufsize = 0;
-int status = 1;
+int c =0, status = 1;
 
 signal(SIGINT, SIG_DFL);
 
@@ -37,17 +37,27 @@ cmd = av[0];
 if ((strcmp(cmd, "exit")) == 0)
 {
 	free(cmd), exit(0);
-	break;
 }
 
-else
+if ((strcmp(cmd, "env")) == 0)
 {
-	if (execute(cmd, av) < 0)
+	while (environ[c])
+	{
+		write(STDOUT_FILENO, environ[c], _strlen(environ[c]));
+		write(STDOUT_FILENO, "\n", 1);
+		c++;
+	}
+}
+
+
+else
+{	if (execute(cmd, av) < 0)
 	{
 		mem_free(av);
 		perror("error");
 		exit(127);
 	}
+
 }
 } while (status);
 return (0);
