@@ -4,7 +4,8 @@
 
 /**
  * execute_bl_in - Builtin command management
- *@cmd: command builtin
+ *@av: arguments.
+ *@line: line command.
  * Return: Return 1 if success.
  */
 
