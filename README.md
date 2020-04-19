@@ -32,7 +32,7 @@ In order to list all the files in the current directory type:
 ```
 /bin/ls
 ```
-
+like in this ![Image]()
 In order to exit the shell type: 
 
 ```
