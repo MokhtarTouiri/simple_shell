@@ -38,7 +38,8 @@ if ((strcmp(cmd, "exit")) == 0)
 {
 	if (av[1] != NULL)
         	code = _atoi(av[1]);
-	exit(code);
+	free(cmd),  exit(code);
+	break;
 }
 
 if (execute(cmd, av) < 0)
