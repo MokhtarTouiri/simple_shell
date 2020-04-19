@@ -37,7 +37,7 @@ int _atoi(char *s);
 
 char *read_line(void);
 char **split_line(char *line);
-int execute(char *cmd, char **av, char *line);
+int execute(char *cmd, char **av);
 void mem_free(char **av);
 
 
@@ -49,4 +49,3 @@ int new_exit(char **av);
 void new_env(void);
 int execute_bl_in(char **av, char *line);
 #endif
-

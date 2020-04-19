@@ -1,11 +1,8 @@
 #include "shell.h"
 
-
-
 /**
  * execute_bl_in - Builtin command management
- *@av: arguments.
- *@line: line command.
+ *@cmd: command builtin
  * Return: Return 1 if success.
  */
 
@@ -37,31 +34,26 @@ return (0);
  *execute - function exec command
  *@cmd: command
  *@av: arguments
- *@line: entered command
  *Return: Always returns 1 on success.
  */
 
-int execute(char *cmd, char **av, char *line)
+int execute(char *cmd, char **av)
 {
 pid_t pid;
-int s, e;
+int s;
 
-e= execute_bl_in(av, line);
-
-if (e == 0)
+pid = fork();
+if (pid == 0)
 {
-	pid = fork();
-	if (pid == 0)
+	signal(SIGINT, SIG_DFL);
+	if (execve(cmd, av, environ) < 0)
 	{
-		signal(SIGINT, SIG_DFL);
-		if (execve(cmd, av, environ) < 0)
-		{
-			return (-1);
-			exit(EXIT_FAILURE);
-		}
+		return (-1);
+		exit(EXIT_FAILURE);
 	}
-	else
-		wait(&s);
 }
+else
+	wait(&s);
 return (1);
 }
+
