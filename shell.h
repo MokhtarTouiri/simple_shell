@@ -47,7 +47,6 @@ void mem_free(char **av);
 
 int new_exit(char **av);
 void new_env(void);
-int execute_bl_in(char *cmd);
 
 #endif
 
