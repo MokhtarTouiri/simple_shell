@@ -4,16 +4,23 @@ In this project, we will attempt to develop a simple shell similar to /bin/sh
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Installing
 
-You will only need to compile the main function
+First you need to clone the repository to your local machine
+
+```
+git clone https://github.com/MokhtarTouiri/simple_shell.git
+```
+
+If you want to recompile the main function type
+
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
-##Deployment
+### Deployment
 
 In order to enter the shell, you only have to execute the program by typing:
 
