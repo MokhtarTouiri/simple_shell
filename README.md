@@ -10,22 +10,33 @@ These instructions will get you a copy of the project up and running on your loc
 
 You will only need to compile the main function
 ```
-gcc -Wall -Werror -Wextra -pedantic shell.c -o hsh
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
-## Running the tests
 
-Explain how to run the automated tests for this system
+##Deployment
 
-### Break down into end to end tests
-
-Explain what these tests test and why
+In order to enter the shell, you only have to execute the program by typing:
 
 ```
-Give an example
+./hsh
 ```
-## Deployment
+## Examples
+In order to list all the files in the current directory type:
+```
+/bin/ls
+```
 
-To be filled later
+In order to exit the shell type: 
+
+```
+exit
+```
+
+If you want to see the environment variables rype:
+
+```
+env
+```
 
 ## Authors
 
