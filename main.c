@@ -9,7 +9,7 @@ int main(void)
 {
 char *line = NULL, *cmd = NULL, **av = NULL;
 size_t bufsize = 0;
-int status = 1;
+int code =0, status = 1;
 
 signal(SIGINT, SIG_DFL);
 
@@ -33,6 +33,13 @@ if (av == NULL || *av == NULL)
 	continue;
 
 cmd = av[0];
+
+if ((strcmp(cmd, "exit")) == 0)
+{
+	if (av[1] != NULL)
+        	code = _atoi(av[1]);
+	exit(code);
+}
 
 if (execute(cmd, av) < 0)
 {
