@@ -1,7 +1,7 @@
 #ifndef SIMPLE_SHELL
 #define SIMPLE_SHELL
 
-#define NULL (void *)0
+#define NULL (void *)
 
 /*
  *Headers
@@ -47,6 +47,6 @@ void mem_free(char **av);
 
 int new_exit(char **av);
 void new_env(void);
-
+int execute_bl_in(char **av, char *line);
 #endif
 

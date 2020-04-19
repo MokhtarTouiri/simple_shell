@@ -9,7 +9,7 @@ int main(void)
 {
 char *line = NULL, *cmd = NULL, **av = NULL;
 size_t bufsize = 0;
-int status = 1;
+int e, status = 1;
 
 signal(SIGINT, SIG_DFL);
 
@@ -32,15 +32,18 @@ av = split_line(line);
 if (av == NULL || *av == NULL)
 	continue;
 
-cmd = av[0];
+e = execute_bl_in(av, line);
 
+if (e == 0)
+{
+cmd = av[0];
 if (execute(cmd, av) < 0)
 {
 	mem_free(av);
 	perror("error");
 	exit(127);
 }
+}
 } while (status);
 return (0);
 }
-

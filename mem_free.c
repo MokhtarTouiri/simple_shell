@@ -14,7 +14,7 @@ return;
 
 else
 {
-	for (c=0; av[c]; c++)
+	for (c = 0; av[c]; c++)
 	{
 		free(av[c]);
 		av[c] = NULL;
