@@ -1,14 +1,19 @@
-.\" Manpage for MCshell.
-
-.\" Contact mohamed-chiheb.lahouli@holbertonschool.com & $
 
 .TH man 2 "15 April 2020" "1.0" "MCshell man page"
+
+.\" Manpage for MCshell.
 
 .SH NAME
 
 MCshell: Attempt of a basic linux shell
 
 .SH DESCRIPTION
+
+Command line Interpreter for basic bash commands
+
+.SH SYNOPSIS
+
+./hsh [options] [file]
 
 .SH OVERVIEW
 
@@ -17,6 +22,8 @@ MCshell: Attempt of a basic linux shell
 .SH BUGS
 
 .SH AUTHORS
+
+.\" Contact mohamed-chiheb.lahouli@holbertonschool.com & mokhtar.touiri@holbertonschool.com
 
 
 
